@@ -9,8 +9,23 @@ app.get('/', (req, res) => {
     <a href="/98">take one down, pass it around</a>
     `);
 })
+
 app.get('/:number_of_bottles', (req,res) => {
-    res.send(`The number of bottles of beer on the wall ${}`)
+    const pageOfBottles = (req.params.number_of_bottles - 1);
+    if(pageOfBottles < 1) {
+        res.send(`
+        <h2>The number of bottles of beer on the wall</h2><h1>${pageOfBottles}</h1>
+        <a href="/99">take one down, start over</a>
+        `);
+    } else {
+        res.send(`
+        <h2>The number of bottles of beer on the wall</h2><h1>${pageOfBottles}</h1>
+        <a href="${pageOfBottles}">take one down, pass it around</a>
+        `);
+    }
+    
+   
+
 })
 
 
